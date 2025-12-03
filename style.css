@@ -281,9 +281,17 @@ body { background: #171717; color: white; overflow-x: hidden; }
 
 /* Algemene breakpoints */
 @media screen and (max-width: 1024px) {
+    .hero-text h1 { font-size: 48px; }
+    .hero-text p { font-size: 16px; }
+
+    .skills-section { padding: 1rem; margin: 1.5rem auto; }
+    .skill-bar { height: 20px; }
+    .skill-fill { height: 20px; line-height: 20px; font-size: 14px; }
+
+    /* Left nav horizontal scroll for tablets */
     .left-nav {
         position: fixed;
-        bottom: 60px; /* boven cirkelnav */
+        bottom: 60px;
         left: 0;
         right: 0;
         display: flex;
@@ -295,225 +303,39 @@ body { background: #171717; color: white; overflow-x: hidden; }
         z-index: 40;
     }
 
-    .left-nav a {
-        flex: 0 0 auto;
-        padding: 6px 12px;
-        font-size: 12px;
-    }
+    .left-nav a { flex: 0 0 auto; font-size: 12px; padding: 6px 12px; }
+    .left-nav::-webkit-scrollbar { display: none; }
 
-    .left-nav::-webkit-scrollbar {
-        display: none;
-    }
-    /* Hero */
-    .hero-text h1 {
-        font-size: 48px;
-    }
-    .hero-text p {
-        font-size: 16px;
-    }
-
-    /* Nav circle */
-    .nav-circle {
-        top: auto;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-        transform: none;
-        flex-direction: row;
-        justify-content: center;
-        gap: 8px;
-        overflow-x: auto; /* horizontaal scrollen */
-        padding: 0 10px;
-        scrollbar-width: none; /* Firefox */
-
-    }
-    .nav-circle::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
-    }
-    .nav-circle a {
-        flex: 0 0 auto; /* voorkomen dat links krimpen */
-    }
-    /* Skills section */
-    .skills-section {
-        padding: 1rem;
-        margin: 1.5rem auto;
-    }
-
-    .skill-bar {
-        height: 20px;
-    }
-
-    .skill-fill {
-        height: 20px;
-        line-height: 20px;
-        font-size: 14px;
-    }
+    /* Nav circle hidden on tablet */
+    .nav-circle { display: none; }
 }
 
-@media screen and (max-width: 800px) {
-    /* Hero */
-    .hero-text h1 {
-        font-size: 28px;
-        line-height: 1.2;
-    }
-    .hero-text p {
-        font-size: 12px;
-        line-height: 1.4;
-    }
+/* ----- MOBILE ----- */
+@media screen and (max-width: 600px) {
+    .hero-text h1 { font-size: 22px; line-height: 1.2; }
+    .hero-text p { font-size: 12px; line-height: 1.4; }
 
-    /* Nav circle horizontal onderaan */
-    .nav-circle {
-        top: auto;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        flex-direction: row;
-        gap: 8px;
-    }
-
-    /* About section */
     .about-flex {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 0.8rem; /* minder ruimte */
-        padding: 0 1rem; /* extra marge */
-    }
-    .about-image img {
-        max-width: 100px;
-        margin-top: 1rem;
-    }
-    .about-text p {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-    /* Skills Grid */
-    .skills-grid .grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* Diploma items */
-    .diploma-item h2 {
-        font-size: 1rem;
-    }
-    .diploma-item p {
-        font-size: 0.85rem;
-    }
-
-    /* Contact */
-    .contact-text {
-        max-width: 100%;
-        text-align: center;
-    }
-    .contact-info p {
-        font-size: 14px;
-    }
-    .social-icons img {
-        width: 30px;
-        height: 30px;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    /* Hero */
-
-    .about-flex {
         gap: 0.5rem;
+        padding: 0 1rem;
     }
-    .hero-text h1 {
-        font-size: 20px;
-    }
-    .hero-text p {
-        font-size: 12px;
-    }
-    .left-nav {
-        position: fixed;
-        bottom: 60px; /* boven cirkelnav */
-        left: 0;
-        right: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 8px;
-        overflow-x: auto;
-        padding: 0 10px;
-        z-index: 40;
-    }
-    .left-nav a {
-        flex: 0 0 auto;
-        padding: 6px 12px;
-        font-size: 12px;
-    }
-    .left-nav::-webkit-scrollbar {
-        display: none;
-    }
-    /* Nav circle */
-    .nav-circle {
-        top: auto;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-        transform: none;
-        flex-direction: row;
-        justify-content: center;
-        gap: 8px;
-        overflow-x: auto; /* horizontaal scrollen */
-        padding: 0 10px;
-        scrollbar-width: none; /* Firefox */
-    }
-    .nav-circle::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
-    }
-    .nav-circle a {
-        flex: 0 0 auto; /* voorkomen dat links krimpen */
-    }
-    /* About */
-    .about-image img {
-        max-width: 80px;
-    }
-    .about-text p {
-        font-size: 11px;
-        line-height: 1.3;
-        padding: 0 8px;
-    }
+    .about-image img { max-width: 80px; }
+    .about-text p { font-size: 11px; line-height: 1.3; padding: 0 8px; }
 
-    /* Skills Grid */
-    .skills-grid .grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
+    .skills-grid .grid { grid-template-columns: 1fr; gap: 15px; }
+    .grid-item { padding: 1rem; }
+    .grid-item h3 { font-size: 1rem; }
+    .grid-item p { font-size: 0.85rem; }
 
-    .grid-item {
-        padding: 1rem;
-    }
+    .diploma-item h2 { font-size: 0.95rem; }
+    .diploma-item p { font-size: 0.8rem; }
 
-    .grid-item h3 {
-        font-size: 1rem;
-    }
-    .grid-item p {
-        font-size: 0.85rem;
-    }
-
-    /* Diploma items */
-    .diploma-item h2 {
-        font-size: 0.95rem;
-    }
-    .diploma-item p {
-        font-size: 0.8rem;
-    }
-
-    /* Contact */
-    .contact-info p {
-        font-size: 12px;
-    }
-    .social-icons img {
-        width: 25px;
-        height: 25px;
-    }
+    .contact-info p { font-size: 12px; }
+    .social-icons img { width: 25px; height: 25px; }
 }
-
 
 
 /* --- SKILL GRID WITH ICONS --- */
