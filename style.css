@@ -281,6 +281,29 @@ body { background: #171717; color: white; overflow-x: hidden; }
 
 /* Algemene breakpoints */
 @media screen and (max-width: 1024px) {
+    .left-nav {
+        position: fixed;
+        bottom: 60px; /* boven cirkelnav */
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 0 10px;
+        z-index: 40;
+    }
+
+    .left-nav a {
+        flex: 0 0 auto;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .left-nav::-webkit-scrollbar {
+        display: none;
+    }
     /* Hero */
     .hero-text h1 {
         font-size: 48px;
@@ -291,9 +314,25 @@ body { background: #171717; color: white; overflow-x: hidden; }
 
     /* Nav circle */
     .nav-circle {
-        left: 20px;
-    }
+        top: auto;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        gap: 8px;
+        overflow-x: auto; /* horizontaal scrollen */
+        padding: 0 10px;
+        scrollbar-width: none; /* Firefox */
 
+    }
+    .nav-circle::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    .nav-circle a {
+        flex: 0 0 auto; /* voorkomen dat links krimpen */
+    }
     /* Skills section */
     .skills-section {
         padding: 1rem;
