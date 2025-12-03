@@ -392,10 +392,24 @@ body { background: #171717; color: white; overflow-x: hidden; }
 
     /* Nav circle */
     .nav-circle {
-        gap: 6px;
-        padding: 0 5px;
+        top: auto;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        gap: 8px;
+        overflow-x: auto; /* horizontaal scrollen */
+        padding: 0 10px;
+        scrollbar-width: none; /* Firefox */
     }
-
+    .nav-circle::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    .nav-circle a {
+        flex: 0 0 auto; /* voorkomen dat links krimpen */
+    }
     /* About */
     .about-image img {
         max-width: 80px;
