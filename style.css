@@ -307,7 +307,7 @@ body { background: #171717; color: white; overflow-x: hidden; }
     .left-nav::-webkit-scrollbar { display: none; }
 
     /* Nav circle hidden on tablet */
-    .nav-circle { display: none; }
+
 }
 
 /* ----- MOBILE ----- */
