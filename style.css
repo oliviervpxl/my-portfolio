@@ -280,6 +280,7 @@ body { background: #171717; color: white; overflow-x: hidden; }
 /* ------------------ MOBILE / TABLET RESPONSIVE ------------------ */
 
 /* Algemene breakpoints */
+/* ----- TABLET (≤1024px) ----- */
 @media screen and (max-width: 1024px) {
     .hero-text h1 { font-size: 48px; }
     .hero-text p { font-size: 16px; }
@@ -287,34 +288,54 @@ body { background: #171717; color: white; overflow-x: hidden; }
     .skills-section { padding: 1rem; margin: 1.5rem auto; }
     .skill-bar { height: 20px; }
     .skill-fill { height: 20px; line-height: 20px; font-size: 14px; }
-
-    /* Left nav horizontal scroll for tablets */
-    .left-nav {
-        position: fixed;
-        bottom: 60px;
-        left: 0;
-        right: 0;
-        display: flex;
+    .topbar {
+        font-size: 12px;
+        top: 10px;
+        white-space: nowrap;
+        transform: translateX(-50%);
+        padding-top:30px
+    }
+    /* NAV boven naam/titel - horizontaal, compact */
+    .nav-circle {
+        position: relative;
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex !important;
         flex-direction: row;
-        justify-content: center;
-        gap: 8px;
-        overflow-x: auto;
-        padding: 0 10px;
-        z-index: 40;
+        gap: 12px;
+        margin: 1rem 0 0 0;
+        background: none;
+        padding: 0;
+        z-index: 20;
     }
 
-    .left-nav a { flex: 0 0 auto; font-size: 12px; padding: 6px 12px; }
-    .left-nav::-webkit-scrollbar { display: none; }
+    .nav-circle a {
+        font-size: 14px;
+        padding: 6px 10px;
+        white-space: nowrap;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(8px);
+    }
 
-    /* Nav circle hidden on tablet */
-
+    /* Preview-box verbergen op mobiel/tablet */
+    .preview-box {
+        display: none !important;
+    }
 }
 
-/* ----- MOBILE ----- */
+/* ----- MOBILE (≤600px) ----- */
 @media screen and (max-width: 600px) {
     .hero-text h1 { font-size: 22px; line-height: 1.2; }
     .hero-text p { font-size: 12px; line-height: 1.4; }
-
+    .topbar {
+        font-size: 12px;
+        top: 10px;
+        white-space: nowrap;
+        transform: translateX(-50%);
+        padding-top:30px
+    }
     .about-flex {
         flex-direction: column;
         align-items: center;
@@ -335,7 +356,36 @@ body { background: #171717; color: white; overflow-x: hidden; }
 
     .contact-info p { font-size: 12px; }
     .social-icons img { width: 25px; height: 25px; }
+
+    /* NAV boven naam/titel - horizontaal, compact */
+    .nav-circle {
+        position: relative;
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        gap: 12px;
+        margin: 1.2rem 0 0 0;
+        background: none;
+        padding: 0;
+        z-index: 20;
+    }
+
+    .nav-circle a {
+        font-size: 14px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(8px);
+        white-space: nowrap;
+    }
+
+    .preview-box { display: none !important; }
+
 }
+
 
 
 /* --- SKILL GRID WITH ICONS --- */
