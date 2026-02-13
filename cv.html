@@ -3,24 +3,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Olivier Vleeschouwers</title>
+    <title>CV - Olivier Vleeschouwers</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.halo.min.js"></script>
 </head>
 
-<body class="home">
+<body class="cv">
 <div id="hero">
-    <header class="topbar">OLIVIER VLEESCHOUWERS - <sup>SYSTEM /  NETWORK ENGINEER</sup>
-
-
+    <header class="topbar">
+        OLIVIER VLEESCHOUWERS - <sup>SYSTEM / NETWORK ENGINEER</sup>
     </header>
 
     <nav class="nav-circle">
-        <button class="nav-toggle" aria-label="Menu" aria-expanded="true" type="button">
-            <span></span><span></span><span></span>
-        </button>
-
+        <!-- Voeg jouw hamburger button hier toe als je die gebruikt -->
         <a href="index.html" data-preview="Return to the homepage">Home</a>
         <a href="about.html" data-preview="Learn more about my profile">About</a>
         <a href="skills.html" data-preview="Overview of my core skills">Skills</a>
@@ -32,18 +28,37 @@
         <div class="preview-box"></div>
     </nav>
 
-    <div class="hero-text">
-        <h1 style="font-size: 30px">WELCOME TO MY PORTFOLIO</h1>
-        <p> I’m <strong>Olivier Vleeschouwers</strong>, an IT student with a background in System and Network Administration. If you want to learn more about me, feel free to explore the <a href="about.html" style="color: deeppink">About</a>, <a href="skills.html" style="color: deeppink">Skills</a>, and <a href="projects.html" style="color: deeppink">Education</a> sections. </p>
+    <div class="hero-text glass-card">
+        <h1>Curriculum Vitae</h1>
+        <p>
+            Download mijn CV als PDF.
+        </p>
 
+        <div class="music-links" style="margin-top: 18px;">
+            <a class="pill-link" href="ov.cv.pdf" download>
+                Download CV (PDF)
+            </a>
 
+            <a class="pill-link" href="ov.cv.pdf" target="_blank" rel="noopener">
+                Open in new tab
+            </a>
+        </div>
+
+        <!-- Optional: inline preview -->
+        <div class="embed-card" style="margin-top: 18px;">
+            <h2>Preview</h2>
+            <div class="embed-wrap">
+                <iframe
+                        title="CV Preview"
+                        src="ov.cv.pdf"
+                        style="width:100%; height:520px; border:0; border-radius:12px;"
+                ></iframe>
+            </div>
+        </div>
 
     </div>
 </div>
 
-<div id="cursor-circle"></div>
-
 <script src="script.js"></script>
-
 </body>
 </html>
