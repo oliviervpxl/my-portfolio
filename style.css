@@ -511,5 +511,6 @@ body { background: #171717; color: white; overflow-x: hidden; }
     .embed-grid {
         grid-template-columns: 1fr;
 
+
     }
 }
