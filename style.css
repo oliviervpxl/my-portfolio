@@ -516,6 +516,8 @@ body{ background: var(--bg); color: var(--text); overflow-x:hidden; }
         -webkit-backdrop-filter: blur(10px);
     }
 
+
+
     .nav-circle a:hover{
         transform: none; /* geen shift op touch */
     }
