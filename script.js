@@ -12,6 +12,7 @@ VANTA.HALO({
     xOffset: -0.04,
     size: 0.5
 
+
 });
 const previewBox = document.querySelector('.preview-box');
 const navLinks = document.querySelectorAll('.nav-circle a');
