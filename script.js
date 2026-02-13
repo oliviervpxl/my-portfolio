@@ -24,6 +24,7 @@ navLinks.forEach(link => {
         previewBox.classList.add('show');
     });
 
+
     link.addEventListener('mouseleave', () => {
         previewBox.classList.remove('show');
     });
