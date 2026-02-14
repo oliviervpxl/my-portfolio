@@ -1,4 +1,4 @@
-
+/*
 VANTA.HALO({
     el: "#hero",
     mouseControls: false,
@@ -9,11 +9,13 @@ VANTA.HALO({
     baseColor: 0x0,
     backgroundColor: 0x6080a,
     amplitudeFactor: 0.00,
-    xOffset: -0.04,
-    size: 0.5
+    size: 0.2
 
 
 });
+
+*/
+
 const previewBox = document.querySelector('.preview-box');
 const navLinks = document.querySelectorAll('.nav-circle a');
 
@@ -68,5 +70,28 @@ navLinks.forEach(link => {
         nav.classList.toggle("collapsed");
         const expanded = !nav.classList.contains("collapsed");
         btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+    });
+})();
+(() => {
+    const btn = document.getElementById("dimToggle");
+    if (!btn) return;
+
+    const KEY = "ultraDim";
+    const apply = (on) => {
+        document.body.setAttribute("data-dim", on ? "1" : "0");
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        btn.textContent = on ? "Normal" : "Dim";
+    };
+
+    // init from storage
+    const saved = localStorage.getItem(KEY);
+    const on = saved === "1";
+    apply(on);
+
+    btn.addEventListener("click", () => {
+        const isOn = document.body.getAttribute("data-dim") === "1";
+        const next = !isOn;
+        localStorage.setItem(KEY, next ? "1" : "0");
+        apply(next);
     });
 })();

@@ -21,6 +21,38 @@
     --radius-pill: 999px;
 }
 
+
+#hero{
+    position: relative;
+    overflow: hidden;
+}
+#hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+            -45deg,
+            rgba(238,119,82,0.25),
+            rgba(231,60,126,0.25),
+            rgba(35,166,213,0.25),
+            rgba(35,213,171,0.25)
+    );
+
+    background-size: 400% 400%;
+    animation: gradient 20s ease infinite;
+
+    z-index: 1;
+    pointer-events: none;
+}
+@keyframes gradient {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+
 *{ margin:0; padding:0; box-sizing:border-box; font-family:"Inter", sans-serif; }
 body{ background: var(--bg); color: var(--text); overflow-x:hidden; }
 
@@ -873,3 +905,128 @@ body{ background: var(--bg); color: var(--text); overflow-x:hidden; }
     }
 }
 
+body{
+    position: relative;
+    background: #0f0f12; /* fallback */
+}
+
+body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: linear-gradient(
+            -45deg,
+            rgba(120,40,80,0.22),
+            rgba(60,20,90,0.22),
+            rgba(20,60,90,0.22),
+            rgba(20,80,60,0.22)
+    );
+
+    background-size: 400% 400%;
+    animation: gradient 35s ease infinite;
+
+    z-index: 0;
+    pointer-events: none;
+}
+/* =========================
+   Dark / Ultra-dim toggle button
+   ========================= */
+.dim-toggle{
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 9999;
+
+    padding: 10px 14px;
+    border-radius: 999px;
+
+    color: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+    transition: transform .18s ease, background .18s ease, opacity .18s ease;
+}
+
+.dim-toggle:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.11); }
+.dim-toggle:active{ transform: translateY(0px); }
+
+/* =========================
+   Theme variables
+   - Default = normal dark
+   ========================= */
+:root{
+    --bg: #0f0f12;
+    --glass-bg: rgba(255,255,255,0.06);
+    --glass-brd: rgba(255,255,255,0.12);
+    --glass-shadow: 0 0 35px rgba(0,255,160,0.08);
+
+    /* gradient intensity */
+    --grad-a: 0.22;
+    --grad-b: 0.22;
+    --grad-c: 0.22;
+    --grad-d: 0.22;
+
+    /* overall dim filter for background layer */
+    --bg-dim: 1;
+}
+
+/* Gebruik je body::before gradient? Maak hem parametric */
+body::before{
+    /* laat je eigen gradient kleuren staan, enkel alpha variabel maken */
+    background: linear-gradient(
+            -45deg,
+            rgba(120,40,80,var(--grad-a)),
+            rgba(60,20,90,var(--grad-b)),
+            rgba(20,60,90,var(--grad-c)),
+            rgba(20,80,60,var(--grad-d))
+    );
+
+    filter: brightness(var(--bg-dim));
+}
+
+/* =========================
+   Ultra-dim mode (night/focus)
+   - No class changes needed, we toggle an attribute
+   ========================= */
+body[data-dim="1"]{
+    /* donkerder basis */
+    --bg: #08080b;
+
+    /* glass minder “glowy” */
+    --glass-bg: rgba(255,255,255,0.045);
+    --glass-brd: rgba(255,255,255,0.10);
+    --glass-shadow: 0 0 22px rgba(0,0,0,0.35);
+
+    /* gradient veel subtieler */
+    --grad-a: 0.10;
+    --grad-b: 0.10;
+    --grad-c: 0.10;
+    --grad-d: 0.10;
+
+    --bg-dim: 0.78;
+}
+
+/* button state (optioneel) */
+body[data-dim="1"] .dim-toggle{
+    opacity: 0.9;
+    background: rgba(255,255,255,0.06);
+}
+
+/* Mobile: knop iets kleiner */
+@media (max-width: 600px){
+    .dim-toggle{
+        top: 14px;
+        right: 14px;
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+}
