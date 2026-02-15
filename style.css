@@ -1710,6 +1710,8 @@ body.terminal-page .terminal-center{
                 0 0 12px rgba(255, 100, 210, 0.6);
     }
 
+
+
     /* geen focus/active achtergrond */
     .nav-circle .nav-toggle:focus,
     .nav-circle .nav-toggle:focus-visible,
