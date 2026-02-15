@@ -1,20 +1,4 @@
-/*
-VANTA.HALO({
-    el: "#hero",
-    mouseControls: false,
-    touchControls: false,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    baseColor: 0x0,
-    backgroundColor: 0x6080a,
-    amplitudeFactor: 0.00,
-    size: 0.2
 
-
-});
-
-*/
 
 const previewBox = document.querySelector('.preview-box');
 const navLinks = document.querySelectorAll('.nav-circle a');
@@ -22,7 +6,7 @@ const navLinks = document.querySelectorAll('.nav-circle a');
 navLinks.forEach(link => {
     link.addEventListener('mouseenter', () => {
         const content = link.dataset.preview;
-        previewBox.innerHTML = content; // Hier kan ook HTML voor icoon of afbeelding
+        previewBox.textContent = content; // Hier kan ook HTML voor icoon of afbeelding
         previewBox.classList.add('show');
     });
 

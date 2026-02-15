@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Over Mij - Olivier Vleeschouwers</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.halo.min.js"></script>
+    <!-- Security -->
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  base-uri 'self';
+  object-src 'none';
+  script-src 'self';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  frame-src https://w.soundcloud.com https://open.spotify.com;
+  upgrade-insecure-requests;
+">
+
 </head>
 
 <body class="about">
@@ -21,7 +32,7 @@
         <a href="about.html" data-preview="Learn more about my profile">About</a>
         <a href="skills.html" data-preview="Overview of my core skills">Skills</a>
         <a href="projects.html" data-preview="View my education and certifications">Education</a>
-        <a href="otherinterests.html" data-preview="Music & creative work">Interests</a>
+        <a href="otherinterests.html" data-preview="Music & creative work">Music</a>
         <a href="cv.html" data-preview="Download my CV">CV</a>
         <a href="contact.html" data-preview="Get in touch with me">Contact</a>
 
@@ -36,11 +47,19 @@
         <div class="about-text">
             <h1>ABOUT ME</h1>
             <p>
-                I am Olivier Vleeschouwers, a graduate in System and Network Administration and currently pursuing a bachelor's degree in Applied Computer Science with a focus on system and network management.
-                I have experience with Windows and Linux servers, network administration, IT automation, and cloud solutions. I enjoy designing infrastructures, analyzing complex issues, and developing scripts that make workflows more efficient.
-                I continue to expand my knowledge in programming and cloud platforms, and I am motivated to explore new technologies and build reliable, scalable IT solutions.
-                Check out my <a href="skills.html" style="color: deeppink">Skills</a> for a full overview.
+                I am Olivier, a motivated IT student with a degree in System and Network Administration. I am currently pursuing a professional bachelor’s degree in Applied Informatics, with further specialization in the same domain.
             </p>
+
+            <p>
+                I have hands-on experience in managing and optimizing IT infrastructures, including Windows and Linux servers, Active Directory, virtualization platforms, and cloud environments. Additionally, I have experience with network configuration, troubleshooting, and implementing automation solutions.
+            </p>
+
+            <p>
+                My strengths include a structured working approach, solution-oriented thinking, a strong focus on stability and efficiency, and a high level of motivation to continuously deepen my technical expertise.
+                For a detailed overview of my technical skills, feel free to explore my <a href="skills.html" style="color: deeppink">skills overview</a>.
+            </p>
+
+
 
 
 
@@ -51,7 +70,7 @@
 
         </div>
         <div class="about-image">
-            <img src="./images/me.png" alt="Olivier Vleeschouwers" />
+            <img src="./images/me.pf.png" alt="Olivier Vleeschouwers" />
         </div>
     </div>
 

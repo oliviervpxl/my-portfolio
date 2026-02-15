@@ -1030,3 +1030,66 @@ body[data-dim="1"] .dim-toggle{
         font-size: 13px;
     }
 }
+/* =========================
+   Fix: dim button lager op tablet & mobile
+   ========================= */
+
+/* Tablet */
+@media screen and (max-width: 900px) {
+    .dim-toggle {
+        top: 50px;   /* schuift knop naar beneden */
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+    .dim-toggle {
+        top: 50px;   /* nog iets lager voor gsm */
+    }
+}
+/* =========================
+   Glass scroll arrow (centered)
+   ========================= */
+
+.scroll-arrow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+    text-decoration: none;
+    color: white;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    z-index: 10;
+}
+
+.scroll-arrow:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: rgba(255, 255, 255, 0.25);
+}
+/* =========================
+   Arrow positioning fix for tablet & mobile
+   ========================= */
+
+@media screen and (max-width: 900px) {
+    .scroll-arrow {
+       display: none;
+    }
+}

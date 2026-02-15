@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact - Olivier Vleeschouwers</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.halo.min.js"></script>
+    <!-- Security -->
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  base-uri 'self';
+  object-src 'none';
+  script-src 'self';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data:;
+  frame-src https://w.soundcloud.com https://open.spotify.com;
+  upgrade-insecure-requests;
+">
+
 </head>
 <body class="contact">
 <div id="hero">
@@ -22,7 +33,7 @@
         <a href="about.html" data-preview="Learn more about my profile">About</a>
         <a href="skills.html" data-preview="Overview of my core skills">Skills</a>
         <a href="projects.html" data-preview="View my education and certifications">Education</a>
-        <a href="otherinterests.html" data-preview="Music & creative work">Interests</a>
+        <a href="otherinterests.html" data-preview="Music & creative work">Music</a>
         <a href="cv.html" data-preview="Download my CV">CV</a>
         <a href="contact.html" data-preview="Get in touch with me">Contact</a>
 
@@ -41,17 +52,17 @@
             </div>
 
             <div class="social-icons">
-                <a href="https://github.com/oliviervpxl" target="_blank">
+                <a href="https://github.com/oliviervpxl" target="_blank" rel="noopener noreferrer">
                     <img src="github.png" alt="GitHub">
                 </a>
-                <a href="https://www.linkedin.com/in/olivier-vleeschouwers" target="_blank">
+                <a href="https://www.linkedin.com/in/olivier-vleeschouwers" target="_blank" rel="noopener noreferrer">
                     <img src="linkedin.png" alt="LinkedIn">
                 </a>
             </div>
         </div>
 
         <div class="about-image">
-            <img src="./images/me.png" alt="Olivier Vleeschouwers">
+            <img src="./images/me.pf.png" alt="Olivier Vleeschouwers">
         </div>
     </div>
 
