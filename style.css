@@ -1088,6 +1088,7 @@ body[data-dim="1"] .dim-toggle{
    Arrow positioning fix for tablet & mobile
    ========================= */
 
+
 @media screen and (max-width: 900px) {
     .scroll-arrow {
        display: none;
