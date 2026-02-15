@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Olivier Vleeschouwers</title>
+    <title>Terminal - Olivier Vleeschouwers</title>
     <link rel="stylesheet" href="style.css" />
 
     <!-- Security -->
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  base-uri 'self';
-  object-src 'none';
-  script-src 'self';
-  style-src 'self' 'unsafe-inline';
-  img-src 'self' data:;
-  frame-src https://w.soundcloud.com https://open.spotify.com;
-  upgrade-insecure-requests;
-">
-
+    default-src 'self';
+    base-uri 'self';
+    object-src 'none';
+    script-src 'self';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    frame-src https://w.soundcloud.com https://open.spotify.com;
+    upgrade-insecure-requests;
+  ">
 </head>
+
+<body class="terminal-page">
 <button id="backToTop" aria-label="Back to top">↑</button>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<body class="home">
 <div id="hero">
-    <header class="topbar">OLIVIER VLEESCHOUWERS - <sup>SYSTEM /  NETWORK ENGINEER</sup>
 
-
-
-
-    </header>
+    <header class="topbar">OLIVIER VLEESCHOUWERS - <sup>SYSTEM / NETWORK ENGINEER</sup></header>
 
     <nav class="nav-circle">
         <button class="nav-toggle" aria-label="Menu" aria-expanded="true" type="button">
@@ -44,18 +40,19 @@
         <a href="otherinterests.html" data-preview="Music & creative work">Music</a>
         <a href="cv.html" data-preview="Download my CV">CV</a>
         <a href="contact.html" data-preview="Get in touch with me">Contact</a>
-
-
+        <a href="terminal.html" data-preview="Interactive terminal">Terminal</a>
 
         <div class="preview-box"></div>
     </nav>
+
     <button id="dimToggle" class="dim-toggle" type="button" aria-pressed="false" aria-label="Toggle ultra-dim mode">
         Dim
     </button>
 
-    <div class="hero-text">
-        <h1 style="font-size: 30px">WELCOME TO MY PORTFOLIO</h1>
-        <p> I’m <strong>Olivier Vleeschouwers</strong>, an IT student with a background in System and Network Administration. If you want to learn more about me, feel free to explore the <a href="about.html" style="color: deeppink">About</a>, <a href="skills.html" style="color: deeppink">Skills</a>, and <a href="projects.html" style="color: deeppink">Education</a> sections. </p>
+    <!-- ✅ Terminal block in the MIDDLE of the hero -->
+    <div class="hero-text glass-card terminal-center">
+        <h1 style="margin-bottom: 14px;">Interactive Terminal</h1>
+
         <div class="terminal">
             <div class="term-top">
                 <div class="term-dots">
@@ -63,6 +60,7 @@
                 </div>
                 <div class="term-title">olivier@portfolio:~</div>
             </div>
+
             <div class="term-body" id="terminalOut"></div>
 
             <div class="term-input">
@@ -78,21 +76,18 @@
             </div>
         </div>
 
-        <div class="status-widget">
+        <div class="status-widget" style="margin-top: 14px;">
             <div class="status-row">
-                <span style="width: 100%;justify-content: center" class="status-pill"><span class="status-dot"></span> Response time: &lt; 24h</span>
-                <a style="width: 100%" href="terminal.html" class="pill-link">Open interactive terminal</a>
+          <span style="width:100%" class="status-pill">
+            <span class="status-dot"></span> Response time: &lt; 24h
+          </span>
             </div>
         </div>
-
-
 
     </div>
 </div>
 
 <div id="cursor-circle"></div>
-
 <script src="script.js"></script>
-
 </body>
 </html>

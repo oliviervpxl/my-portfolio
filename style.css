@@ -1093,6 +1093,628 @@ body[data-dim="1"] .dim-toggle{
 
 @media screen and (max-width: 900px) {
     .scroll-arrow {
-       display: none;
+
+    }
+}
+/* iPhone: zet arrow onder "Skills & Expertise" */
+@media screen and (max-width: 600px){
+    body.skills .scroll-arrow{
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+
+        display: flex !important;
+        margin: 14px auto 0 !important;  /* onder de titel */
+    }
+
+    /* zorg dat hero-text geen absolute positioning forceert */
+    body.skills .hero-text{
+        position: relative !important;
+        bottom: auto !important;/* iPhone: zet arrow onder "Skills & Expertise" */
+        @media screen and (max-width: 600px){
+            body.skills .scroll-arrow{
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                transform: none !important;
+
+                display: flex !important;
+                margin: 14px auto 0 !important;  /* onder de titel */
+            }
+
+            /* zorg dat hero-text geen absolute positioning forceert */
+            body.skills .hero-text{
+                position: relative !important;
+                bottom: auto !important;
+                left: auto !important;
+                right: auto !important;
+                transform: none !important;
+                margin: 18px auto 0 !important;
+                text-align: center;
+            }
+        }
+
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+        margin: 18px auto 0 !important;
+        text-align: center;
+    }
+}
+/* =========================
+   Scroll arrow – base style
+   ========================= */
+.scroll-arrow{
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 26px;
+    color: #fff;
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.28);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+    transition: transform .25s ease, background .25s ease;
+}
+
+.scroll-arrow:hover{
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.28);
+}
+@media screen and (min-width: 901px){
+    body.skills .scroll-arrow{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        z-index: 20;
+    }
+}
+@media screen and (max-width: 900px){
+    body.skills .scroll-arrow{
+        position: relative;
+        display: block;
+        margin: 22px auto 10px;
+        transform: none;
+    }
+}
+/* =========================
+   Scroll arrow – DESKTOP
+   ========================= */
+.scroll-arrow{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+    color: white;
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+
+    z-index: 20;
+}
+/* =========================
+   Scroll arrow – MOBILE & TABLET
+   ========================= */
+@media screen and (max-width: 900px){
+
+    .scroll-arrow{
+        position: relative;      /* <-- NIET absolute */
+        top: auto;
+        left: auto;
+        transform: none;
+
+        margin: 20px auto 0;     /* onder de titel */
+        display: flex;
+    }
+}
+/* =========================
+   Scroll arrow (ONE source of truth)
+   Desktop: center ABOVE title (your red X)
+   Mobile/Tablet: under title
+   ========================= */
+
+/* base look */
+body.skills .scroll-arrow{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+    color: #fff;
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.28);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+    transition: transform .25s ease, background .25s ease;
+    z-index: 40;
+}
+
+body.skills .scroll-arrow:hover{
+    transform: scale(1.08);
+    background: rgba(255,255,255,0.25);
+}
+
+/* DESKTOP: place it centered ABOVE the title */
+@media screen and (min-width: 901px){
+    body.skills .scroll-arrow{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+
+        /* Dit is de truc: hang hem boven je titel */
+        bottom: calc(12% + 350px);
+    }
+}
+
+/* TABLET + MOBILE: put it under the title */
+@media screen and (max-width: 900px){
+    body.skills .scroll-arrow{
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+
+        margin: 18px auto 0;
+    }
+}
+
+/* =========================
+   Smooth scroll (met respect voor reduced motion)
+   ========================= */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){
+    html { scroll-behavior: auto; }
+}
+
+/* =========================
+   Back to top button (floating)
+   ========================= */
+#backToTop{
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    color: rgba(255,255,255,0.92);
+    cursor: pointer;
+
+    transform: translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease, background .2s ease;
+}
+#backToTop.show{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+#backToTop:hover{ background: rgba(255,255,255,0.14); }
+
+/* =========================
+   Toast (Copied ✅)
+   ========================= */
+#toast{
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 9999;
+
+    padding: 10px 14px;
+    border-radius: 999px;
+
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    color: rgba(255,255,255,0.92);
+    font-size: 14px;
+    font-weight: 600;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+}
+#toast.show{
+    opacity: 1;
+    transform: translateX(-50%) translateY(-6px);
+}
+
+/* =========================
+   Copy buttons (glass)
+   ========================= */
+.copy-row{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+.copy-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 12px;
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.14);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: rgba(255,255,255,0.92);
+    font-weight: 600;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: transform .15s ease, background .2s ease;
+}
+.copy-btn:hover{
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.14);
+}
+
+/* =========================
+   Terminal card
+   ========================= */
+.terminal{
+    margin: 16px auto 0;
+    width: min(760px, 92vw);
+    text-align: left;
+
+    background: rgba(0,0,0,0.22);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 18px;
+
+    padding: 14px 16px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+.term-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+.term-dots{ display:flex; gap:6px; }
+.term-dot{
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+}
+.term-title{
+    font-size: 12px;
+    letter-spacing: .2px;
+    opacity: .85;
+}
+.term-body{
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 14px;
+    line-height: 1.55;
+}
+.term-line{ white-space: pre-wrap; }
+.term-prompt{ color: rgba(255,255,255,0.88); }
+.term-cmd{ color: rgba(255,255,255,0.95); }
+.term-out{ color: rgba(255,255,255,0.78); margin-left: 14px; }
+.term-caret{
+    display:inline-block; width: 10px;
+    animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* =========================
+   System status widget
+   ========================= */
+.status-widget{
+    margin: 14px auto 0;
+    width: min(760px, 92vw);
+    display: grid;
+    gap: 10px;
+}
+.status-row{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.status-pill{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 12px;
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    font-weight: 600;
+    opacity: 0.95;
+}
+.status-dot{
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(120,255,190,0.85);
+    box-shadow: 0 0 12px rgba(120,255,190,0.45);
+}
+/* =========================
+   Terminal input (interactive)
+   ========================= */
+.term-input{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 14px;
+}
+
+.term-input input{
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: rgba(255,255,255,0.95);
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.term-input input::placeholder{
+    color: rgba(255,255,255,0.45);
+}
+.term-hint{
+    opacity: .7;
+    font-size: 12px;
+    margin-top: 6px;
+}
+/* =========================
+   Terminal (Apple-style, compact)
+   ========================= */
+
+.terminal{
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+    background: rgba(10,10,12,0.78);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.terminal--compact{
+    width: min(760px, 92vw);
+    margin: 18px auto 0;
+}
+
+.terminal--apple{
+    background: rgba(12,12,14,0.82);
+}
+
+.term-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.term-dots{
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.term-dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.25);
+}
+.term-dot.red{ background: #ff5f57; }
+.term-dot.yellow{ background: #febc2e; }
+.term-dot.green{ background: #28c840; }
+
+.term-title{
+    font-size: 12px;
+    opacity: 0.85;
+    letter-spacing: 0.2px;
+    font-weight: 600;
+}
+
+.term-body{
+    padding: 14px 14px 10px;
+    height: 180px;                /* compact */
+    overflow: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.88);
+}
+
+/* nicer scrollbar */
+.term-body::-webkit-scrollbar{ width: 10px; }
+.term-body::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,0.10);
+    border-radius: 999px;
+}
+.term-body::-webkit-scrollbar-track{
+    background: transparent;
+}
+
+.term-line{
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.term-prompt{
+    color: rgba(140, 255, 220, 0.9);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    margin-right: 8px;
+}
+
+.term-input{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    background: rgba(0,0,0,0.25);
+}
+
+.term-input input{
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: none;
+    color: rgba(255,255,255,0.92);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+}
+
+.term-input input::placeholder{
+    color: rgba(255,255,255,0.35);
+}
+
+/* Mobile: smaller */
+@media (max-width: 600px){
+    .terminal--compact{ width: 94vw; }
+    .term-body{ height: 155px; font-size: 12.5px; }
+}
+/* Terminal page: center the hero-text block */
+body.terminal-page .terminal-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: min(900px, 92vw);
+    text-align: left;
+}
+
+/* On mobile: keep it in flow so it won't overlap nav */
+@media (max-width: 900px){
+    body.terminal-page .terminal-center{
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 22px auto 24px;
+        text-align: left;
+    }
+}
+/* FIX: remove light overlay around hamburger (mobile/tablet) */
+@media screen and (max-width: 900px){
+    .nav-toggle{
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+
+        -webkit-tap-highlight-color: transparent;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .nav-toggle:focus,
+    .nav-toggle:focus-visible,
+    .nav-toggle:active{
+        background: transparent !important;
+        outline: none !important;
+    }
+}
+/* HARD RESET hamburger button (fix square background) */
+@media (max-width: 900px){
+    .nav-circle .nav-toggle{
+        all: unset;                 /* reset ALLES (ook oude background/border) */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+
+        width: 44px;
+        height: 44px;
+
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* extra zekerheid: geen pseudo overlay */
+    .nav-circle .nav-toggle::before,
+    .nav-circle .nav-toggle::after{
+        content: none !important;
+    }
+
+    /* spans opnieuw stylen (want all:unset reset ook dit) */
+    .nav-circle .nav-toggle span{
+        display: block;
+        height: 2px;
+        width: 22px;
+        border-radius: 2px;
+
+        background: linear-gradient(90deg, #ff6bd5, #c77dff);
+        box-shadow:
+                0 0 6px rgba(255, 100, 210, 0.8),
+                0 0 12px rgba(255, 100, 210, 0.6);
+    }
+
+    /* geen focus/active achtergrond */
+    .nav-circle .nav-toggle:focus,
+    .nav-circle .nav-toggle:focus-visible,
+    .nav-circle .nav-toggle:active{
+        outline: none !important;
+        background: transparent !important;
     }
 }
