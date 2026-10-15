@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050609">
+    <meta name="description" content="TRNSFR music, latest releases, and TRNSFORM SHAPER, a tempo-synchronised VST3 sidechain volume-shaping tool for Windows.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://w.soundcloud.com https://open.spotify.com; upgrade-insecure-requests;">
+    <title>Other Interests — Olivier Vleeschouwers | TRNSFR</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Page-specific styling; colours and components reuse the portfolio's design tokens. -->
+    <style>
+        body.interests-page { min-height: 100vh; }
+
+        .interests-hero-card.hero-text {
+            top: 50%;
+            bottom: auto;
+            left: 50%;
+            right: auto;
+            transform: translate(-50%, -50%);
+            width: min(920px, calc(100vw - 360px));
+            max-width: 920px;
+            text-align: left;
+            padding: clamp(26px, 4vw, 48px);
+        }
+        .interest-eyebrow {
+            color: var(--accent-light);
+            font-size: .76rem !important;
+            font-weight: 750;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            margin: 0 0 12px !important;
+        }
+        .interests-hero-card h1 {
+            font-size: clamp(2.7rem, 6vw, 5.4rem) !important;
+            line-height: .98;
+            letter-spacing: -.065em;
+            overflow-wrap: anywhere;
+        }
+        .interests-hero-card h1 span {
+            color: var(--accent-light);
+        }
+        .interests-hero-copy {
+            max-width: 660px;
+            margin-top: 20px !important;
+        }
+        .interest-social-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 25px;
+        }
+        .interest-social-links .pill-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 42px;
+        }
+        .interest-social-links svg {
+            display: block;
+            width: 18px;
+            height: 18px;
+            flex: 0 0 auto;
+        }
+        .interest-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 22px;
+            font-size: .9rem;
+            text-decoration: none;
+        }
+
+        .interests-main { padding: 24px 0 42px; }
+        .interests-shell {
+            width: min(1000px, calc(100vw - 360px));
+            margin-inline: auto;
+        }
+        .interest-section { padding: 22px 0 38px; }
+        .interest-section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+        .interest-section-kicker {
+            color: var(--accent-light);
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .17em;
+            text-transform: uppercase;
+        }
+        .interest-section-heading h2 {
+            margin-top: 7px;
+            font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+            letter-spacing: -.055em;
+            line-height: 1.05;
+        }
+        .interest-section-index {
+            color: var(--muted-strong);
+            font-size: .75rem;
+            letter-spacing: .13em;
+            white-space: nowrap;
+        }
+
+        .release-card {
+            display: grid;
+            grid-template-columns: minmax(220px, .9fr) minmax(0, 1.1fr);
+            align-items: center;
+            gap: clamp(22px, 4vw, 42px);
+            padding: clamp(18px, 3.6vw, 34px);
+        }
+        .release-cover {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 17px;
+            background: #10162a;
+            box-shadow: 0 16px 50px rgba(0,0,0,.36), 0 0 34px rgba(59,130,246,.12);
+        }
+        .release-cover::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: radial-gradient(circle at 25% 18%, rgba(124,183,255,.78), transparent 27%), radial-gradient(circle at 80% 80%, rgba(139,92,246,.65), transparent 31%), linear-gradient(145deg, #121d3b, #080b13 60%, #221440);
+        }
+        .release-cover-image {
+            position: absolute;
+            z-index: 2;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .release-cover-placeholder {
+            position: absolute;
+            z-index: 1;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10%;
+            color: rgba(255,255,255,.93);
+        }
+        .release-cover-placeholder::before {
+            content: "";
+            position: absolute;
+            inset: 13% 14%;
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 50%;
+            transform: rotate(-14deg);
+            box-shadow: 0 0 0 18px rgba(255,255,255,.02), 0 0 0 42px rgba(255,255,255,.025), 0 0 42px rgba(134,173,255,.14);
+        }
+        .release-cover-mark, .release-cover-caption, .release-cover-placeholder strong { position: relative; z-index: 1; }
+        .release-cover-mark { font-size: .62rem; font-weight: 800; letter-spacing: .16em; }
+        .release-cover-placeholder strong { align-self: flex-start; font-size: clamp(1.9rem, 4vw, 3.5rem); letter-spacing: -.08em; line-height: .88; text-transform: uppercase; text-shadow: 0 4px 24px rgba(0,0,0,.4); }
+        .release-cover-caption { align-self: flex-end; font-size: .62rem; letter-spacing: .17em; }
+        .release-copy { min-width: 0; }
+        .release-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-light);
+            font-size: .7rem;
+            font-weight: 800;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+        .release-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #78aaff; box-shadow: 0 0 12px rgba(120,170,255,.75); }
+        .release-title { margin-top: 14px; font-size: clamp(2.2rem, 4.6vw, 4rem); line-height: .98; letter-spacing: -.065em; }
+        .release-label { margin-top: 13px; color: var(--text) !important; font-weight: 650; }
+        .release-description { max-width: 460px; margin-top: 12px !important; }
+        .release-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+        .interest-cta {
+            color: #fff !important;
+            background: linear-gradient(105deg, #3479ed, #5655d9);
+            border-color: rgba(154,197,255,.12);
+            box-shadow: 0 10px 30px rgba(59,130,246,.2);
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+        }
+        .interest-cta:hover { color: #fff !important; box-shadow: 0 12px 38px rgba(59,130,246,.3); }
+        .interest-secondary-link { font-size: .86rem; }
+
+        .vst-card { overflow: hidden; padding: 0; }
+        .vst-visual {
+            position: relative;
+            display: grid;
+            place-items: center;
+            min-height: 290px;
+            padding: clamp(18px, 4vw, 34px);
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            background: radial-gradient(ellipse at 50% 70%, rgba(59,130,246,.14), transparent 48%), linear-gradient(135deg, rgba(255,255,255,.025), transparent 60%);
+        }
+        .vst-visual::before {
+            content: "";
+            position: absolute;
+            width: 72%;
+            height: 68%;
+            border: 1px solid rgba(112,161,255,.09);
+            border-radius: 50%;
+            box-shadow: 0 0 0 22px rgba(112,161,255,.022), 0 0 0 54px rgba(112,161,255,.017);
+        }
+        .plugin-image {
+            position: relative;
+            z-index: 2;
+            display: block;
+            width: min(820px, 100%);
+            max-width: 100%;
+            max-height: 410px;
+            height: auto;
+            margin: auto;
+            border-radius: 14px;
+            object-fit: contain;
+            box-shadow: 0 22px 60px rgba(0,0,0,.46), 0 0 36px rgba(59,130,246,.15);
+        }
+        .plugin-placeholder {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            width: min(100%, 790px);
+            min-height: 225px;
+            aspect-ratio: 16 / 7.8;
+            padding: clamp(14px, 3vw, 24px);
+            border: 1px solid rgba(151,183,255,.2);
+            border-radius: 16px;
+            background: linear-gradient(145deg, rgba(24,31,50,.98), rgba(7,9,16,.97));
+            box-shadow: 0 22px 60px rgba(0,0,0,.4), 0 0 38px rgba(59,130,246,.09);
+        }
+        .plugin-window-bar { display: flex; align-items: center; gap: 6px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.07); }
+        .plugin-window-bar i { width: 7px; height: 7px; border-radius: 50%; background: #50617c; }
+        .plugin-window-title { margin-left: 8px; color: #a7bbdf; font-size: .64rem; font-weight: 800; letter-spacing: .15em; }
+        .plugin-ui-placeholder { flex: 1; display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; align-items: center; padding-top: 13px; }
+        .fake-envelope { position: relative; display: flex; align-items: end; justify-content: space-around; height: 100%; min-height: 85px; padding: 10px; border: 1px solid rgba(255,255,255,.055); border-radius: 10px; background: rgba(255,255,255,.018); overflow: hidden; }
+        .fake-envelope::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 24%, rgba(128,158,211,.1) 25%, transparent 26%, transparent 49%, rgba(128,158,211,.1) 50%, transparent 51%, transparent 74%, rgba(128,158,211,.1) 75%, transparent 76%); }
+        .fake-envelope span { z-index: 1; width: 8%; border-radius: 4px 4px 1px 1px; background: linear-gradient(#8fb8ff, #5a58eb); }
+        .fake-envelope span:nth-child(1) { height: 76%; } .fake-envelope span:nth-child(2) { height: 40%; } .fake-envelope span:nth-child(3) { height: 20%; } .fake-envelope span:nth-child(4) { height: 11%; } .fake-envelope span:nth-child(5) { height: 22%; } .fake-envelope span:nth-child(6) { height: 48%; } .fake-envelope span:nth-child(7) { height: 76%; } .fake-envelope span:nth-child(8) { height: 88%; } .fake-envelope span:nth-child(9) { height: 73%; }
+        .fake-knobs { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+        .fake-knob { display: flex; align-items: center; gap: 8px; padding: 7px; border-radius: 8px; background: rgba(255,255,255,.025); }
+        .fake-knob::before { content: ""; display: block; flex: 0 0 22px; width: 22px; aspect-ratio: 1; border: 3px solid #617cad; border-right-color: #9cbfff; border-radius: 50%; }
+        .fake-knob span { width: 45%; height: 4px; border-radius: 99px; background: #3d4f70; }
+        .plugin-placeholder-caption { margin-top: 9px; color: var(--muted-strong); text-align: right; font-size: .62rem; letter-spacing: .1em; }
+        .vst-body { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(220px, .75fr); gap: 30px; padding: clamp(22px, 4vw, 36px); }
+        .vst-name { font-size: clamp(1.9rem, 3.8vw, 3rem); line-height: 1; letter-spacing: -.06em; }
+        .vst-copy { max-width: 640px; margin-top: 15px !important; }
+        .feature-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+        .feature-list .tag { font-size: .74rem; }
+        .download-panel { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 12px; padding-left: 26px; border-left: 1px solid rgba(255,255,255,.08); }
+        .download-status { display: inline-flex; align-items: center; gap: 7px; color: var(--accent-light); font-size: .69rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+        .download-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-light); }
+        .download-meta { color: var(--muted-strong) !important; font-size: .78rem; margin-top: 0 !important; }
+        .download-panel .pill-link { width: 100%; text-align: center; }
+        .download-note { font-size: .75rem !important; line-height: 1.55 !important; margin-top: 0 !important; color: var(--muted-strong) !important; }
+
+        .interests-footer { margin-top: 20px; padding: 25px 0 35px; border-top: 1px solid rgba(255,255,255,.075); }
+        .interests-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+        .interests-copyright { color: var(--muted-strong); font-size: .8rem; }
+        .interests-footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+        .interests-footer-links a { color: var(--muted); font-size: .79rem; text-decoration: none; }
+        .interests-footer-links a:hover { color: var(--accent-light); }
+
+        @media screen and (max-width: 900px) {
+            .interests-hero-card.hero-text {
+                position: relative;
+                top: auto;
+                bottom: auto;
+                left: auto;
+                right: auto;
+                transform: none;
+                width: min(920px, 92vw);
+                margin: 0 auto 28px;
+                text-align: left;
+            }
+            .interests-shell { width: min(1000px, calc(100vw - 36px)); }
+            .interests-main { padding-top: 8px; }
+        }
+        @media screen and (max-width: 700px) {
+            .interests-hero-card.hero-text { padding: 24px 20px; }
+            .interests-hero-card h1 { font-size: clamp(2.5rem, 12vw, 4rem) !important; }
+            .interest-social-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .interest-social-links .pill-link { width: 100%; padding-inline: 10px; }
+            .interest-section { padding: 18px 0 26px; }
+            .interest-section-heading { align-items: flex-start; }
+            .interest-section-index { padding-top: 5px; }
+            .release-card { grid-template-columns: minmax(0, 1fr); }
+            .release-cover { width: min(100%, 420px); margin-inline: auto; }
+            .release-copy { padding: 4px 0 0; }
+            .release-actions { align-items: flex-start; flex-direction: column; }
+            .vst-visual { min-height: 245px; }
+            .vst-body { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+            .download-panel { padding: 20px 0 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.08); }
+            .download-panel .pill-link { width: auto; min-width: 180px; }
+            .interests-footer-inner { align-items: flex-start; flex-direction: column; }
+        }
+        @media screen and (max-width: 420px) {
+            .interest-section-index { display: none; }
+            .interest-social-links { grid-template-columns: 1fr; }
+            .interest-social-links .pill-link { width: 100%; }
+            .plugin-placeholder { min-height: 240px; aspect-ratio: 4 / 3; }
+            .plugin-ui-placeholder { grid-template-columns: 1fr; }
+            .fake-knobs { grid-template-columns: repeat(4, minmax(0,1fr)); }
+            .fake-knob { justify-content: center; padding: 5px; }
+            .fake-knob span { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .interests-page *, .interests-page *::before, .interests-page *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+        }
+    </style>
+</head>
+<body class="interests-page">
+<div id="hero">
+    <header class="topbar">OLIVIER VLEESCHOUWERS - <sup>SYSTEM / NETWORK ENGINEER</sup></header>
+
+    <nav class="nav-circle" aria-label="Main navigation">
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="true" type="button">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="index.html" data-preview="Return to the homepage">Home</a>
+        <a href="about.html" data-preview="Learn more about my profile">About</a>
+        <a href="skills.html" data-preview="Overview of my core skills">Skills</a>
+        <a href="projects.html" data-preview="View my education and certifications">Education</a>
+        <a href="cv.html" data-preview="Download my CV">CV</a>
+        <a href="contact.html" data-preview="Get in touch with me">Contact</a>
+        <a href="otherinterests.html" data-preview="MUSIC PRODUCTION / VST INSTALL">MUSIC PRODUCTION / VST INSTALL</a>
+        <div class="preview-box" aria-hidden="true"></div>
+    </nav>
+
+    <div class="hero-text glass-card interests-hero-card">
+        <p class="interest-eyebrow">TRNSFR / MUSIC &amp; AUDIO</p>
+        <h1>OTHER <span>INTERESTS</span></h1>
+        <p class="interests-hero-copy">Electronic music, late-night ideas and audio tools. This is the creative side of my world beyond IT.</p>
+        <nav class="interest-social-links" aria-label="Music profiles">
+            <a class="pill-link" href="https://open.spotify.com/search/TRNSFR" target="_blank" rel="noopener noreferrer" aria-label="Find TRNSFR on Spotify">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1ed760"></circle><path d="M5.8 9.1c4.4-1.35 9.4-.96 13.05 1.2M6.5 12.1c3.65-1.08 7.65-.72 10.8 1.14M7.2 15c2.85-.78 5.9-.54 8.5.96" fill="none" stroke="#07100a" stroke-width="1.65" stroke-linecap="round"></path></svg>
+                Spotify
+            </a>
+            <a class="pill-link" href="https://soundcloud.com/search?q=TRNSFR" target="_blank" rel="noopener noreferrer" aria-label="Find TRNSFR on SoundCloud">
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="#ff6a1a"><path d="M3.2 15.5a2.2 2.2 0 0 1 .8-4.25c.08-2.5 2.1-4.5 4.6-4.5 2.65 0 4.75 2.15 4.75 4.8v5.2H3.7a2.4 2.4 0 0 1-.5-1.25Zm11.2-3.2a3.6 3.6 0 0 1 5.9 2.75A3.7 3.7 0 0 1 16.6 19h-2.2v-6.7Z"></path></svg>
+                SoundCloud
+            </a>
+        </nav>
+        <a class="interest-back-link" href="index.html"><span aria-hidden="true">←</span> Back to main portfolio</a>
+    </div>
+</div>
+
+<main class="interests-main">
+    <div class="interests-shell">
+        <section class="interest-section" aria-labelledby="release-heading">
+            <div class="interest-section-heading">
+                <div>
+                    <p class="interest-section-kicker">01 / Latest release</p>
+                    <h2 id="release-heading">Out now.</h2>
+                </div>
+                <span class="interest-section-index">TRK — 001</span>
+            </div>
+
+            <article class="glass-card release-card">
+                <div class="release-cover">
+                    <!-- Add the official cover image at images/losing-my-mind-cover.png. The CSS artwork remains visible if it is absent. -->
+                    <div class="release-cover-placeholder" aria-hidden="true">
+                        <span class="release-cover-mark">TRNSFR / ECHO CULT</span>
+                        <strong>Losing<br>My Mind</strong>
+                        <span class="release-cover-caption">SINGLE · 2026</span>
+                    </div>
+                    <img class="release-cover-image" src="images/losing-my-mind-cover.png" alt="" loading="lazy">
+                </div>
+                <div class="release-copy">
+                    <span class="release-status">Latest release</span>
+                    <h3 class="release-title">Losing<br>My Mind</h3>
+                    <p class="release-label">Released by Echocult Records</p>
+                    <p class="release-description">Listen to the latest TRNSFR release and explore more music from the label.</p>
+                    <div class="release-actions">
+                        <!-- Replace the Spotify search URL with the direct release URL when available. -->
+                        <a class="pill-link interest-cta" href="https://open.spotify.com/search/Losing%20My%20Mind%20TRNSFR" target="_blank" rel="noopener noreferrer">LISTEN NOW <span aria-hidden="true">↗</span></a>
+                        <a class="interest-secondary-link" href="https://echocultrecords.com/" target="_blank" rel="noopener noreferrer">Explore Echocult Records ↗</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section class="interest-section" aria-labelledby="vst-heading">
+            <div class="interest-section-heading">
+                <div>
+                    <p class="interest-section-kicker">02 / Audio tools</p>
+                    <h2 id="vst-heading">MY OWN VST</h2>
+                </div>
+                <span class="interest-section-index">TRNSFR AUDIO</span>
+            </div>
+
+            <article class="glass-card vst-card">
+                <div class="vst-visual">
+                    <!-- Add a real plugin screenshot at images/trnsform-shaper-ui.png. A mock interface is shown as fallback. -->
+                  
+                    <img class="plugin-image" src="./images/trnsform-shaper-ui.png" alt="TRNSFORM SHAPER plugin interface">
+                </div>
+                <div class="vst-body">
+                    <div>
+                        <p class="interest-section-kicker">Made for producers</p>
+                        <h3 class="vst-name">TRNSFORM SHAPER</h3>
+                        <p class="vst-copy">TRNSFORM SHAPER is a tempo-synchronised VST3 sidechain tool for rhythmic volume ducking and pumping effects. Shape volume with editable curves, sync the movement to your DAW tempo, and reuse your favourite shapes across projects—without setting up a compressor sidechain.</p>
+                        <p class="vst-copy">Created by <strong>Olivier Vleeschouwers &amp; Bas Engelborghs</strong>.</p>
+                        <div class="feature-list" aria-label="Plugin compatibility">
+                            <span class="tag">VST3</span>
+                            <span class="tag">Windows x64</span>
+                            <span class="tag">Host tempo sync</span>
+                            <span class="tag">Version 0.2.0</span>
+                        </div>
+                    </div>
+                    <aside class="download-panel">
+                        <span class="download-status">Version 0.2.0 · Available for Windows</span>
+                        <p class="download-meta">Windows · 64-bit · VST3</p>
+                        <a class="pill-link interest-cta" href="https://github.com/oliviervpxl/TRNSFORM-SHAPER-DOWNLOADS/releases/latest/download/TRNSFORM_SHAPER_Setup_x64.exe" target="_blank" rel="noopener noreferrer">DOWNLOAD INSTALLER <span aria-hidden="true">↓</span></a>
+                        <a class="interest-secondary-link" href="https://github.com/oliviervpxl/TRNSFORM-SHAPER-DOWNLOADS" target="_blank" rel="noopener noreferrer">VIEW GITHUB REPOSITORY ↗</a>
+                        <p class="download-note">Windows 10/11 · 64-bit · VST3. Close your DAW before installing or updating. After installation, rescan your VST3 plugins if needed.</p>
+                    </aside>
+                </div>
+            </article>
+        </section>
+
+        <footer class="interests-footer">
+            <div class="interests-footer-inner">
+                <p class="interests-copyright">© 2026 TRNSFR. Made for the sound.</p>
+                <nav class="interests-footer-links" aria-label="Music links">
+                    <a href="https://open.spotify.com/artist/69mVCbZPjsIV1byi86ozPU?si=pXhI0FZKTBGh9YGt_OU97w" target="_blank" rel="noopener noreferrer">Spotify ↗</a>
+                    <a href="https://soundcloud.com/trnsfrmusic" target="_blank" rel="noopener noreferrer">SoundCloud ↗</a>
+                    <a href="https://echocultrecords.com/" target="_blank" rel="noopener noreferrer">Echocult Records ↗</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+</main>
+
+<div id="cursor-circle"></div>
+<script src="script.js"></script>
+</body>
+</html>
