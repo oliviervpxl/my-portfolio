@@ -34,28 +34,56 @@
     const btn = document.querySelector(".nav-toggle");
     if (!nav || !btn) return;
 
-    btn.addEventListener("click", () => {
-        nav.classList.toggle("collapsed");
-        const expanded = !nav.classList.contains("collapsed");
-        btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+    const openMenu = () => {
+        nav.classList.remove("collapsed");
+        btn.setAttribute("aria-expanded", "true");
+    };
+
+    const closeMenu = () => {
+        nav.classList.add("collapsed");
+        btn.setAttribute("aria-expanded", "false");
+    };
+
+    btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (nav.classList.contains("collapsed")) {
+            openMenu();
+        } else {
+            closeMenu();
+        }
     });
 
     // Close menu when clicking a link on mobile viewports
     nav.querySelectorAll("a").forEach((a) => {
         a.addEventListener("click", () => {
-            if (window.matchMedia("(max-width: 900px)").matches) {
-                nav.classList.add("collapsed");
-                btn.setAttribute("aria-expanded", "false");
+            if (window.matchMedia("(max-width: 1024px)").matches) {
+                closeMenu();
             }
         });
     });
 
+    // Close menu when clicking outside on mobile viewports
+    document.addEventListener("click", (e) => {
+        if (window.matchMedia("(max-width: 1024px)").matches) {
+            if (!nav.classList.contains("collapsed") && !nav.contains(e.target) && !btn.contains(e.target)) {
+                closeMenu();
+            }
+        }
+    });
+
+    // Close menu on Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !nav.classList.contains("collapsed")) {
+            closeMenu();
+            btn.focus();
+        }
+    });
+
     // Mobile/tablet default collapsed state
-    const mq = window.matchMedia("(max-width: 900px)");
+    const mq = window.matchMedia("(max-width: 1024px)");
     const applyNavMedia = () => {
         if (mq.matches) {
-            nav.classList.add("collapsed");
-            btn.setAttribute("aria-expanded", "false");
+            closeMenu();
         } else {
             nav.classList.remove("collapsed");
             btn.setAttribute("aria-expanded", "true");
@@ -198,17 +226,25 @@ document.addEventListener("DOMContentLoaded", () => {
             if (idx === activeIdx) {
                 n.classList.add("active");
                 n.setAttribute("r", "5.5");
+                n.style.fill = "#A7E8BD";
+                n.style.stroke = "#74C69D";
             } else {
                 n.classList.remove("active");
                 n.setAttribute("r", "3.5");
+                n.style.fill = "#1B3B2B";
+                n.style.stroke = "rgba(116, 198, 157, 0.4)";
             }
         });
 
         lines.forEach((l, idx) => {
             if (idx === activeIdx || idx === activeIdx - 1) {
                 l.classList.add("active");
+                l.style.stroke = "#74C69D";
+                l.style.opacity = "0.9";
             } else {
                 l.classList.remove("active");
+                l.style.stroke = "rgba(45, 106, 79, 0.45)";
+                l.style.opacity = "0.4";
             }
         });
 
@@ -216,6 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
             packet.classList.add("moving");
             packet.setAttribute("cx", nodeCoords[activeIdx].x);
             packet.setAttribute("cy", nodeCoords[activeIdx].y);
+            packet.style.fill = "#A7E8BD";
             setTimeout(() => {
                 packet.classList.remove("moving");
             }, 700);
@@ -543,7 +580,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let lastWheelTime = 0;
 
         const isDesktopPaging = () => {
-            const mqSize = window.matchMedia("(min-width: 901px) and (min-height: 651px)").matches;
+            const mqSize = window.matchMedia("(min-width: 1025px) and (min-height: 651px)").matches;
             const mqMotion = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             return mqSize && mqMotion;
         };
@@ -730,7 +767,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const targetIdx = sections.findIndex((s) => s.id === secId);
                     if (targetIdx !== -1) {
                         goToChapter(targetIdx);
-                        if (window.matchMedia("(max-width: 900px)").matches) {
+                        if (window.matchMedia("(max-width: 1024px)").matches) {
                             document.querySelector(".nav-circle")?.classList.add("collapsed");
                             document.querySelector(".nav-toggle")?.setAttribute("aria-expanded", "false");
                         }
