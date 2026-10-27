@@ -914,7 +914,7 @@ body.terminal-page .terminal-center{
         flex-direction: column;
         text-align: center;
     }
-    .about-image img{ max-width: 140px; }
+    .about-image img{ width: 130px; height: 130px; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover; }
 
     .embed-grid{ grid-template-columns: 1fr; }
 
@@ -948,7 +948,7 @@ body.terminal-page .terminal-center{
         border-radius: 18px;
     }
 
-    .about-image img{ max-width: 90px; }
+    .about-image img{ width: 130px; height: 130px; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover; }
 
     .contact-info p{ font-size: 12px; }
     .social-icons img{ width: 26px; height: 26px; }
@@ -1183,12 +1183,17 @@ body.terminal-page .terminal-center{
         justify-content: center;
     }
     .about-image img{
-        max-width: 82px !important;
-        width: 82px !important;
-        height: 82px !important;
-        border-radius: 999px !important;
-        object-fit: cover;
-        opacity: 0.95;
+        width: 130px !important;
+        height: 130px !important;
+        max-width: 130px !important;
+        max-height: 130px !important;
+        min-width: 130px !important;
+        min-height: 130px !important;
+        aspect-ratio: 1 / 1 !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        opacity: 0.98 !important;
     }
 
     /* Tekstblok neemt de ruimte */
@@ -2430,5 +2435,305 @@ html {
         width: 100% !important;
         text-align: center !important;
         justify-content: center !important;
+    }
+}
+
+
+/* =========================================================
+   GSM OVERZICHTELIJKHEID & CENTRERING DESIGN SYSTEM
+   - Profielfoto 100% cirkelvormig & nooit ingedeukt (1:1 aspect ratio)
+   - Volledige harmonieuze centrering op telefoons / GSM (<= 768px)
+   - Behoud van alle bestaande inhoud en functionaliteiten
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+    /* 1. Global Container Centering */
+    body.portfolio-app .hero-text,
+    body.portfolio-app .glass-card,
+    body.portfolio-app .section-content {
+        text-align: center !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* 2. Headings, Subtitles, Eyebrows & Paragraphs */
+    body.portfolio-app h1,
+    body.portfolio-app h2,
+    body.portfolio-app h3,
+    body.portfolio-app p,
+    body.portfolio-app .interest-section-kicker,
+    body.portfolio-app .interest-eyebrow,
+    body.portfolio-app .chapter-kicker {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    body.portfolio-app .hero-text p,
+    body.portfolio-app .about-text p,
+    body.portfolio-app .vst-copy,
+    body.portfolio-app .interests-hero-copy {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 560px !important;
+        line-height: 1.65 !important;
+    }
+
+    /* 3. Profielfoto: Geen vervorming/indeuking, perfect 1:1 gecentreerd */
+    .about-image {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto 18px !important;
+        order: -1 !important;
+    }
+
+    .about-image img,
+    body.contact .about-image img,
+    body.about .about-image img,
+    body.portfolio-app .about-image img {
+        width: 136px !important;
+        height: 136px !important;
+        max-width: 136px !important;
+        max-height: 136px !important;
+        min-width: 136px !important;
+        min-height: 136px !important;
+        aspect-ratio: 1 / 1 !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        flex-shrink: 0 !important;
+        display: block !important;
+        margin: 0 auto !important;
+        border: 3px solid rgba(116, 198, 157, 0.48) !important;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 25px rgba(45, 106, 79, 0.38) !important;
+    }
+
+    /* 4. About & Contact Layouts Centered */
+    .about-flex,
+    body.portfolio-app #about .about-flex,
+    body.portfolio-app #contact .about-flex {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 16px !important;
+        width: 100% !important;
+    }
+
+    .about-text,
+    .contact-text {
+        width: 100% !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+    }
+
+    .contact-info {
+        width: 100% !important;
+        text-align: center !important;
+        margin: 8px auto !important;
+    }
+
+    .social-icons {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 16px !important;
+        margin: 8px auto 16px !important;
+        width: 100% !important;
+    }
+
+    .copy-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto 16px !important;
+    }
+
+    .copy-btn {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    /* 5. Buttons, CTAs & Links Centered */
+    .hero-actions,
+    .music-links {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 16px auto 0 !important;
+    }
+
+    .btn,
+    .pill-link {
+        width: 100% !important;
+        max-width: 320px !important;
+        text-align: center !important;
+        justify-content: center !important;
+        display: inline-flex !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 6. Tags, Badges & Lists Centered */
+    .status-badge,
+    .feature-list,
+    .interest-social-links {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        gap: 8px !important;
+    }
+
+    /* 7. Skills Grid Centered */
+    .skills-grid .grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .grid-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 18px 16px !important;
+    }
+
+    .grid-item img {
+        margin: 0 auto 12px !important;
+        display: block !important;
+    }
+
+    .grid-item h3 {
+        text-align: center !important;
+        margin-bottom: 6px !important;
+    }
+
+    .grid-item p {
+        text-align: center !important;
+    }
+
+    /* 8. CV & Timeline Centered */
+    .cv-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+        max-width: 320px !important;
+        margin: 14px auto 0 !important;
+    }
+
+    .timeline {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        width: 100% !important;
+    }
+
+    .timeline-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 18px 16px !important;
+    }
+
+    /* 9. VST & Other Interests Centered */
+    .vst-card {
+        text-align: center !important;
+    }
+
+    .vst-body {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 20px !important;
+        padding: 20px 16px !important;
+    }
+
+    .download-panel {
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        border-left: none !important;
+        border-top: 1px solid rgba(116, 198, 157, 0.16) !important;
+        padding-left: 0 !important;
+        padding-top: 20px !important;
+        width: 100% !important;
+    }
+
+    .download-panel .pill-link,
+    .download-panel .pro-disabled-cta {
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+
+    .download-note,
+    .download-meta {
+        text-align: center !important;
+    }
+
+    .pro-price-tag {
+        justify-content: center !important;
+    }
+
+    .pro-features-wrap {
+        width: 100% !important;
+        max-width: 540px !important;
+        margin: 16px auto 0 !important;
+    }
+
+    .pro-features-summary {
+        justify-content: center !important;
+        gap: 10px !important;
+    }
+
+    .pro-features-list {
+        text-align: left !important;
+    }
+
+    /* Release card */
+    .release-card {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 22px 16px !important;
+    }
+
+    .release-cover {
+        margin: 0 auto 16px !important;
+    }
+
+    .release-meta {
+        text-align: center !important;
+        align-items: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Terminal Window: Outer centered, code text left-aligned */
+    .terminal {
+        margin: 16px auto 0 !important;
+        max-width: 100% !important;
+        text-align: left !important;
     }
 }
