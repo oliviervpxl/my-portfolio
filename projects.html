@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Education & Certificates – Olivier Vleeschouwers</title>
+    <title>Education & Projects – Olivier Vleeschouwers</title>
     <link rel="stylesheet" href="style.css" />
     <!-- Security -->
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
@@ -21,12 +21,12 @@
   script-src 'self';
   style-src 'self' 'unsafe-inline';
   img-src 'self' data:;
-  frame-src https://w.soundcloud.com https://open.spotify.com;
+  frame-src 'self' https://w.soundcloud.com https://open.spotify.com;
   upgrade-insecure-requests;
 ">
 
 </head>
-<body>
+<body class="projects">
 
 
 <div id="hero">
@@ -38,29 +38,39 @@
         </button>
 
 
-        <a href="index.html" data-preview="Return to the homepage">Home</a>
-        <a href="about.html" data-preview="Learn more about my profile">About</a>
-        <a href="skills.html" data-preview="Overview of my core skills">Skills</a>
-        <a href="projects.html" data-preview="View my education and certifications">Education</a>
-        <a href="cv.html" data-preview="Download my CV">CV</a>
-        <a href="contact.html" data-preview="Get in touch with me">Contact</a>
-        <a href="otherinterests.html" data-preview="MUSIC PRODUCTION / VST INSTALL">MUSIC PRODUCTION / VST INSTALL</a>
+        <a href="index.html#home" data-preview="Return to the homepage">Home</a>
+        <a href="index.html#about" data-preview="Learn more about my profile">About</a>
+        <a href="index.html#skills" data-preview="Overview of my core skills">Skills</a>
+        <a href="index.html#projects" data-preview="View my education and certifications">Education</a>
+        <a href="index.html#cv" data-preview="Download my CV">CV</a>
+        <a href="index.html#contact" data-preview="Get in touch with me">Contact</a>
+        <a href="index.html#otherinterests" data-preview="MUSIC PRODUCTION / VST INSTALL">MUSIC PRODUCTION / VST INSTALL</a>
         <div class="preview-box"></div>
     </nav>
 
 
     <div class="hero-text glass-card popup-card">
-        <h1>Education</h1>
-        <p>Overview of my completed studies</p>
+        <h1>Education &amp; Projects</h1>
+        <p>Overview of my studies and academic projects at Hogeschool PXL</p>
 
         <div class="diploma-item">
-            <h2>⦿ Associate Degree – System & Network Administration</h2>
-            <p>☑ Completed</p>
+            <h2>⦿ Professional Bachelor in Applied Informatics – Hogeschool PXL</h2>
+            <p>Specializing in System and Network Management (2025–present) · In progress</p>
         </div>
 
         <div class="diploma-item">
-            <h2>⦿ Bachelor of Applied Computer Science – System & Network Administration</h2>
-            <p>☐ Currently in progress</p>
+            <h2>⦿ Graduate in System &amp; Network Management – Hogeschool PXL</h2>
+            <p>Associate Degree (2022–2025) · Completed</p>
+        </div>
+
+        <div class="diploma-item">
+            <h2>⦿ AWS Cloud &amp; Observability (PXL)</h2>
+            <p>AWS infrastructure and Ansible automation; monitoring and load tests with Datadog and k6.</p>
+        </div>
+
+        <div class="diploma-item">
+            <h2>⦿ CI/CD &amp; Testing (PXL)</h2>
+            <p>GitHub Actions workflows for API and end-to-end tests with Newman and Playwright; work with Docker and AWS deployment.</p>
         </div>
 
     </div>

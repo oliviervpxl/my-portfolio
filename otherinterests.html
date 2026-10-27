@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://w.soundcloud.com https://open.spotify.com; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src 'self' https://w.soundcloud.com https://open.spotify.com; upgrade-insecure-requests;">
     <title>Other Interests — Olivier Vleeschouwers | TRNSFR</title>
     <link rel="stylesheet" href="style.css">
 
@@ -266,7 +266,69 @@
         .download-panel .pill-link { width: 100%; text-align: center; }
         .download-note { font-size: .75rem !important; line-height: 1.55 !important; margin-top: 0 !important; color: var(--muted-strong) !important; }
 
-        .interests-footer { margin-top: 20px; padding: 25px 0 35px; border-top: 1px solid rgba(255,255,255,.075); }
+                .vst-pro-card { margin-top: 36px; }
+        .pro-status { color: var(--accent-light); }
+        .pro-status::before { background: var(--accent-light); box-shadow: 0 0 10px rgba(124, 183, 255, .6); }
+        .pro-price-tag { display: flex; align-items: baseline; gap: 8px; margin: 4px 0 2px; }
+        .pro-price-val { font-size: 2.2rem; font-weight: 800; letter-spacing: -.04em; color: var(--text); line-height: 1; }
+        .pro-disabled-cta {
+            width: 100%;
+            text-align: center;
+            opacity: .6;
+            cursor: not-allowed;
+            background: rgba(255, 255, 255, .05);
+            border-color: rgba(255, 255, 255, .12);
+            color: var(--muted);
+            user-select: none;
+            font-weight: 800;
+            font-size: .78rem;
+            letter-spacing: .08em;
+        }
+        .pro-disabled-cta:hover {
+            transform: none !important;
+            background: rgba(255, 255, 255, .05) !important;
+            border-color: rgba(255, 255, 255, .12) !important;
+            color: var(--muted) !important;
+        }
+        .pro-features-wrap { margin-top: 18px; }
+        .pro-features-details {
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 12px;
+            background: rgba(10, 14, 24, .45);
+            transition: border-color .2s ease, background .2s ease;
+        }
+        .pro-features-details[open] {
+            border-color: rgba(124, 183, 255, .25);
+            background: rgba(10, 14, 24, .65);
+        }
+        .pro-features-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            font-size: .84rem;
+            font-weight: 650;
+            color: var(--accent-light);
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+        }
+        .pro-features-summary::-webkit-details-marker { display: none; }
+        .pro-features-summary:hover { color: #c7e0ff; }
+        .pro-chevron { transition: transform .2s ease; color: var(--accent-light); flex-shrink: 0; }
+        .pro-features-details[open] .pro-chevron { transform: rotate(180deg); }
+        .pro-features-list {
+            padding: 4px 18px 16px 36px;
+            margin: 0;
+            color: var(--muted);
+            font-size: .82rem;
+            line-height: 1.6;
+        }
+        .pro-features-list li { margin-bottom: 10px; }
+        .pro-features-list li:last-child { margin-bottom: 0; }
+        .pro-features-list strong { color: var(--text); font-weight: 650; }
+
+.interests-footer { margin-top: 20px; padding: 25px 0 35px; border-top: 1px solid rgba(255,255,255,.075); }
         .interests-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
         .interests-copyright { color: var(--muted-strong); font-size: .8rem; }
         .interests-footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
@@ -329,13 +391,13 @@
         <button class="nav-toggle" aria-label="Menu" aria-expanded="true" type="button">
             <span></span><span></span><span></span>
         </button>
-        <a href="index.html" data-preview="Return to the homepage">Home</a>
-        <a href="about.html" data-preview="Learn more about my profile">About</a>
-        <a href="skills.html" data-preview="Overview of my core skills">Skills</a>
-        <a href="projects.html" data-preview="View my education and certifications">Education</a>
-        <a href="cv.html" data-preview="Download my CV">CV</a>
-        <a href="contact.html" data-preview="Get in touch with me">Contact</a>
-        <a href="otherinterests.html" data-preview="MUSIC PRODUCTION / VST INSTALL">MUSIC PRODUCTION / VST INSTALL</a>
+        <a href="index.html#home" data-preview="Return to the homepage">Home</a>
+        <a href="index.html#about" data-preview="Learn more about my profile">About</a>
+        <a href="index.html#skills" data-preview="Overview of my core skills">Skills</a>
+        <a href="index.html#projects" data-preview="View my education and certifications">Education</a>
+        <a href="index.html#cv" data-preview="Download my CV">CV</a>
+        <a href="index.html#contact" data-preview="Get in touch with me">Contact</a>
+        <a href="index.html#otherinterests" data-preview="MUSIC PRODUCTION / VST INSTALL">MUSIC PRODUCTION / VST INSTALL</a>
         <div class="preview-box" aria-hidden="true"></div>
     </nav>
 
@@ -353,7 +415,7 @@
                 SoundCloud
             </a>
         </nav>
-        <a class="interest-back-link" href="index.html"><span aria-hidden="true">←</span> Back to main portfolio</a>
+        <a class="interest-back-link" href="index.html#home"><span aria-hidden="true">←</span> Back to main portfolio</a>
     </div>
 </div>
 
@@ -426,6 +488,56 @@
                         <a class="pill-link interest-cta" href="https://github.com/oliviervpxl/TRNSFORM-SHAPER-DOWNLOADS/releases/latest/download/TRNSFORM_SHAPER_Setup_x64.exe" target="_blank" rel="noopener noreferrer">DOWNLOAD INSTALLER <span aria-hidden="true">↓</span></a>
                         <a class="interest-secondary-link" href="https://github.com/oliviervpxl/TRNSFORM-SHAPER-DOWNLOADS" target="_blank" rel="noopener noreferrer">VIEW GITHUB REPOSITORY ↗</a>
                         <p class="download-note">Windows 10/11 · 64-bit · VST3. Close your DAW before installing or updating. After installation, rescan your VST3 plugins if needed.</p>
+                    </aside>
+                </div>
+            </article>
+
+            <article class="glass-card vst-card vst-pro-card">
+                <div class="vst-visual">
+                    <img class="plugin-image" src="./images/trnsform-shaper-ui.png" alt="TRNSFORM SHAPER PRO plugin interface">
+                </div>
+                <div class="vst-body">
+                    <div>
+                        <p class="interest-section-kicker">Upcoming Pro Edition</p>
+                        <h3 class="vst-name">TRNSFORM SHAPER PRO</h3>
+                        <p class="vst-copy">The upcoming Pro Edition expands the core shaper into a surgical sidechain and multiband dynamics processor.</p>
+
+                        <div class="feature-list" aria-label="Plugin highlights">
+                            <span class="tag">SYNC | AUDIO | MIDI</span>
+                            <span class="tag">Sidechain EQ Filter</span>
+                            <span class="tag">Lookahead Pre-Delay</span>
+                            <span class="tag">Split-Band Ducking</span>
+                            <span class="tag">Mid/Side Processing</span>
+                            <span class="tag">Global Shape Modifiers</span>
+                            <span class="tag">A/B State Comparison</span>
+                        </div>
+
+                        <div class="pro-features-wrap">
+                            <details class="pro-features-details">
+                                <summary class="pro-features-summary">
+                                    <span>Feature Descriptions &amp; DSP Details</span>
+                                    <svg class="pro-chevron" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+                                </summary>
+                                <ol class="pro-features-list">
+                                    <li><strong>3 Trigger Modes [SYNC | AUDIO | MIDI]:</strong> Expand beyond standard sync with Triplet, Dotted, and Swing (50–75%) timing. Use sample-accurate MIDI Note-On triggering, or use external audio (Bus 1) with a 0-lag peak envelope detector (18 ms peak-hold).</li>
+                                    <li><strong>Sidechain EQ Filter &amp; Real-Time Visualizer:</strong> Isolate trigger transients with a 12 dB/oct HPF/LPF filter and Threshold control. View the post-filter signal in real-time (60 FPS) on the Curve Editor background, complete with a Playhead Hit-Flash.</li>
+                                    <li><strong>Lookahead Pre-Delay:</strong> Selectable 0, 2, 5, or 10 ms lookahead with automatic DAW latency compensation (PDC) for zero-click transient ducking.</li>
+                                    <li><strong>Split-Band / Frequency-Specific Ducking:</strong> Phase-compensated 24 dB/oct Linkwitz-Riley (LR4) crossover. Duck only the sub/low-bass (20–120 Hz) while leaving mids and highs completely untouched.</li>
+                                    <li><strong>Mid/Side Processing:</strong> Apply volume shaping to the full stereo signal (L/R), exclusively to the mono center (MID), or exclusively to the stereo edges (SIDE).</li>
+                                    <li><strong>Global Shape Modifiers:</strong> Warp the entire active curve in real-time with global TENSION and SKEW controls without moving individual nodes.</li>
+                                    <li><strong>A/B State Comparison:</strong> Instantly compare two complete setups (including all 16 curve slots and all DSP parameters) using [A], [B], and [COPY A&gt;B].</li>
+                                </ol>
+                            </details>
+                        </div>
+                    </div>
+                    <aside class="download-panel">
+                        <span class="download-status pro-status">Coming Soon</span>
+                        <div class="pro-price-tag">
+                            <span class="pro-price-val">€5</span>
+                        </div>
+                        <p class="download-meta">Upcoming release</p>
+                        <div class="pill-link pro-disabled-cta" aria-disabled="true">COMING SOON · €5</div>
+                        <p class="download-note">TRNSFORM SHAPER PRO is currently in development. Pricing will be €5 upon release.</p>
                     </aside>
                 </div>
             </article>
